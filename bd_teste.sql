@@ -62,7 +62,19 @@ select * from aluno;
 
 update
 aluno
+
 set
 nome = 'kalel', cpf = '98765432101'
+
 where
 id = 1;
+
+/* select * from aluno where nome = 'kalel'; */
+
+delete from
+aluno
+
+where
+nome = 'kalel';
+
+select * from aluno;
