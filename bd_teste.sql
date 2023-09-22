@@ -198,3 +198,19 @@ select * from aluno where ativo = true;
 
 /* output: nenhum aluno */
 select * from aluno where ativo = false;
+
+/* filtros lógicos e e ou */
+
+/* and é válido quando as duas condições retornam como verdadeiras */
+/* output: todos os alunos que possuem nome iniciando em bruno
+e cpf preenchido */
+select * from aluno where nome like 'bruno%' and cpf is not null;
+
+/* or é válido quando ao menos uma das duas condições retornam como verdadeiras */
+/* aqui ele consegue trazer o aluno bruno, mesmo não existindo um bruno200 */
+select * from aluno where nome like 'bruno' or nome like 'bruno200*';
+
+/* output: todos os alunos que possuem nome iniciando em bruno,
+cpf preenchido
+e idade preenchida */
+select * from aluno where nome like 'bruno%' and cpf is not null and idade is not null;
