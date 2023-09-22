@@ -97,6 +97,8 @@ insert into aluno (nome) values ('bruno99');
 
 select * from aluno;
 
+/* filtros de caracteres */
+
 /* output: linha do aluno bruno2 */
 select * from aluno where nome = 'bruno2';
 
@@ -140,3 +142,59 @@ select * from aluno where nome like '% %';
 
 /* output: todos os alunos, pois todos atendem à condição */
 select * from aluno where nome like '%u%o%';
+
+/* filtro especial que funciona para todos os tipos de campo */
+
+/* output: todos os alunos, pois todos possuem o campo nome preenchido */
+select * from aluno where nome is not null;
+
+/* output: nenhum aluno, pois todos possuem o campo nome preenchido */
+select * from aluno where nome is null;
+
+/* output: apenas o aluno bruno, pois só ele possui os outros campos prenchidos */
+select * from aluno where cpf is not null;
+
+/* filtros numéricos */
+/* obs: também serve para data e hora */
+
+/* output: bruno */
+select * from aluno where idade = 99;
+
+/* output: nenhum aluno */
+select * from aluno where idade = 98;
+
+/* output: bruno */
+select * from aluno where idade <> 98;
+
+/* output: nenhum aluno */
+/* obs: esse tipo de filtro não compreende os campos nulos como diferentes de 99, neste exemplo */
+select * from aluno where idade <> 99;
+
+/* output: bruno */
+select * from aluno where idade >= 99;
+
+/* output: nenhum aluno */
+select * from aluno where idade <= 98;
+
+/* output: nenhum aluno */
+select * from aluno where idade > 99;
+select * from aluno where idade < 98;
+
+/* obs: o between é inclusivo, ou seja, inclui o número declarado na busca */
+
+/* output: bruno */
+/* inclui o 90 e o 10 na busca (>= / <=) */
+select * from aluno where idade between 90 and 100;
+
+/* output: nenhum aluno */
+/* inclui o 10 e o 20 na busca (>= / <=) */
+select * from aluno where idade between 10 and 20;
+
+/* filtros booleanos */
+/* de forma semelhante, o retorno do false não inclui os nulos */
+
+/* output: bruno */
+select * from aluno where ativo = true;
+
+/* output: nenhum aluno */
+select * from aluno where ativo = false;
