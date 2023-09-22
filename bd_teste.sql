@@ -78,3 +78,11 @@ where
 nome = 'kalel';
 
 select * from aluno;
+
+/* as = alias */
+
+select
+nome as "nome do aluno",
+idade as "idade do aluno",
+ativo as "situação do aluno"
+from aluno;
