@@ -16,10 +16,10 @@ create table aluno
 select * from aluno;
 
 /* para inserir valores em todos os campos da tabela:
-insert into * values ()*/
+insert into * values () */
 
 /* de todo modo, o mais comum e recomendado é
-mesmo indicar quais colunas serão preenchidas, como abaixo*/
+mesmo indicar quais colunas serão preenchidas, como abaixo */
 
 /* id é incluído automaticamente, não é preciso adicionar */
 
@@ -86,3 +86,57 @@ nome as "nome do aluno",
 idade as "idade do aluno",
 ativo as "situação do aluno"
 from aluno;
+
+select * from aluno;
+
+insert into aluno (nome) values ('bruno2');
+insert into aluno (nome) values ('bruno3');
+insert into aluno (nome) values ('bruno4');
+insert into aluno (nome) values ('bruno5');
+insert into aluno (nome) values ('bruno99');
+
+select * from aluno;
+
+/* output: linha do aluno bruno2 */
+select * from aluno where nome = 'bruno2';
+
+/* output: blank, pois não há aluno com esse nome */
+select * from aluno where nome = 'bruno10';
+
+/* output: todos os alunos, pois não há aluno com esse nome */
+/* obs: <> = != */
+select * from aluno where nome <> 'bruno10';
+select * from aluno where nome != 'bruno10';
+
+/* output: apenas o aluno com nome bruno */
+select * from aluno where nome like 'bruno';
+
+/* output: apenas o aluno com nome bruno */
+/* operador especial do like _  = any */
+select * from aluno where nome like '_runo';
+
+/* output: todos os alunos com nomes que iniciam em bruno
+e possuem UMA outra coisa depois */
+select * from aluno where nome like 'bruno_';
+
+/* output: todos os alunos com nomes que iniciam em bruno
+e possuem DUAS outras coisas depois */
+select * from aluno where nome like 'bruno__';
+
+/* not like */
+
+/* output: ficam de fora aqueles que possuem UMA coisa depois no nome */
+select * from aluno where nome not like 'bruno_';
+
+/* operador especial do like % = any from or before that point */
+/* output: todos os alunos, pois todos começam com b */
+select * from aluno where nome like 'b%';
+
+/* output: apenas o aluno bruno99, pois apenas ele termina com 99 */
+select * from aluno where nome like '%99';
+
+/* output: nenhum aluno, pois nenhum possui espaço no nome */
+select * from aluno where nome like '% %';
+
+/* output: todos os alunos, pois todos atendem à condição */
+select * from aluno where nome like '%u%o%';
