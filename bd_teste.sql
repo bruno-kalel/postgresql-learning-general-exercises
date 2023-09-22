@@ -57,3 +57,12 @@ values
 )
 
 select * from aluno;
+
+/* select * from aluno where id = 1; */
+
+update
+aluno
+set
+nome = 'kalel', cpf = '98765432101'
+where
+id = 1;
