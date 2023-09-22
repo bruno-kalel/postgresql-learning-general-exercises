@@ -214,3 +214,132 @@ select * from aluno where nome like 'bruno' or nome like 'bruno200*';
 cpf preenchido
 e idade preenchida */
 select * from aluno where nome like 'bruno%' and cpf is not null and idade is not null;
+
+/* chaves primárias */
+
+/* inserindo valores nulos no identificador, o que não é ideal */
+create table curso
+(
+	id integer,
+	nome varchar(255)
+);
+
+insert into curso
+( 
+	id,
+	nome
+)
+
+values
+(
+	NULL,
+	NULL
+);
+
+select * from curso;
+
+drop table curso;
+
+/* evitando que o identificador possa ser nulo, mas ainda podem existir identificadores iguais */
+create table curso
+(
+	id integer not null,
+	nome varchar(255) not null
+);
+
+insert into curso
+( 
+	id,
+	nome
+)
+
+values
+(
+	1,
+	'curso1'
+);
+
+insert into curso
+( 
+	id,
+	nome
+)
+
+values
+(
+	1,
+	'curso2'
+);
+
+select * from curso;
+
+drop table curso;
+
+/* evitando que identificadores possam se repetir */
+create table curso
+(
+	id integer not null,
+	nome varchar(255) not null
+);
+
+insert into curso
+( 
+	id,
+	nome
+)
+
+values
+(
+	1,
+	'curso1'
+);
+
+insert into curso
+( 
+	id,
+	nome
+)
+
+values
+(
+	2,
+	'curso2'
+);
+
+select * from curso;
+
+/* id agora possui as características de um chave primária */
+/* chaves primárias não podem ser nulas e precisam ser únicas */
+
+/* argumento not null unique pode ser substituído pelo argumento primary key */
+create table curso
+(
+	id integer primary key,
+	nome varchar(255) not null
+);
+
+insert into curso
+( 
+	id,
+	nome
+)
+
+values
+(
+	1,
+	'curso1'
+);
+
+insert into curso
+( 
+	id,
+	nome
+)
+
+values
+(
+	2,
+	'curso2'
+);
+
+select * from curso;
